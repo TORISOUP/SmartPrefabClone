@@ -2,6 +2,10 @@
 
 Prefabのクローン時にMaterialも一緒にコピーしてくれるエディタ拡張です。
 
+# ダウンロード
+
+[Releases](https://github.com/TORISOUP/SmartPrefabClone/releases)から
+
 # 使い方
 
 UnityPackageを導入すると右クリックメニューが追加されます。
