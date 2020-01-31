@@ -16,7 +16,7 @@ namespace TORISOUP.SmartPrefabClone.Editor
             // 保存先のフルパス
             var saveDir = Directory.GetParent(savePath).FullName;
             // Materialの保存先のフルパス
-            var materialFullPath = Path.Combine(saveDir, $"{originName}_materials");
+            var materialFullPath = Path.Combine(saveDir, string.Format("{0}_materials", originName));
             // Materialの保存先の相対パス
             var materialPath = materialFullPath.ToAssetsPath();
             
@@ -51,11 +51,11 @@ namespace TORISOUP.SmartPrefabClone.Editor
                     nm.CopyPropertiesFromMaterial(t);
 
                     // 同じファイル名だったら数字をつける
-                    var fileName = $"{t.name}.mat";
+                    var fileName = string.Format("{0}.mat", t.name);
                     var num = 1;
                     while (File.Exists(Path.Combine(materialFullPath, fileName)))
                     {
-                        fileName = $"{t.name}{num++}.mat";
+                        fileName = string.Format("{0}{1}.mat", t.name, num++);
                     }
 
                     // コピーしたマテリアルを保存

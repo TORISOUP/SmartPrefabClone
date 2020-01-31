@@ -1,7 +1,5 @@
-using System;
 using System.IO;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 namespace TORISOUP.SmartPrefabClone.Editor
 {
@@ -13,7 +11,7 @@ namespace TORISOUP.SmartPrefabClone.Editor
         internal static string ToAssetsPath(this string path)
         {
             var delimit = Regex.Escape(Path.DirectorySeparatorChar.ToString());
-            var split = Regex.Split(path, $"{delimit}Assets{delimit}");
+            var split = Regex.Split(path, string.Format("{0}Assets{1}", delimit, delimit));
             return Path.Combine("Assets", split[1]);
         }
     }

@@ -1,11 +1,15 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEditor;
 
 namespace TORISOUP.SmartPrefabClone.Editor
 {
     public sealed class SmartPrefabCloneWindow
     {
-        private static string SelectAssetPath => AssetDatabase.GetAssetPath(Selection.objects[0]);
+        private static string SelectAssetPath
+        {
+            get { return AssetDatabase.GetAssetPath(Selection.objects[0]); }
+        }
 
         [MenuItem("Assets/Clone Prefab with Material", priority = 0)]
         private static void Show()
@@ -16,7 +20,7 @@ namespace TORISOUP.SmartPrefabClone.Editor
 
             // 保存先指定
             var filePath = EditorUtility.SaveFilePanelInProject(
-                "保存先", $"{gameObject.name}_clone", "prefab", "");
+                "保存先", string.Format("{0}_clone", gameObject.name), "prefab", "");
 
             if (string.IsNullOrEmpty(filePath)) return;
 
